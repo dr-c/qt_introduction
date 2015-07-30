@@ -5,7 +5,6 @@ Counter::Counter()
   : QObject()
   , m_value(0)
   {
-
   }
 
 int Counter::value() const

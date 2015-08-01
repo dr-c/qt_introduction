@@ -18,6 +18,8 @@ int main(int argc, char *argv[])
   c4->setObjectName("c4");
   o5->setObjectName("o5");
 
+  parent->dumpObjectTree();
+
   auto show_destroy_msg = [](QObject* i_obj)
     {
     qDebug() << i_obj->objectName();

@@ -15,7 +15,6 @@ Counter::Counter(QObject* i_obj)
 
 Counter::~Counter()
   {
-  //emit destroyed(this);
   }
 
 int Counter::value() const

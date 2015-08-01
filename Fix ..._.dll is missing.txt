@@ -1,0 +1,5 @@
+Debugging->Environment:
+
+PATH=%QTDIR%\bin;%PATH%;
+
+http://stackoverflow.com/questions/28813526/qt-5-4-with-visual-studio-2013-qtcored-dll-missing

@@ -5,16 +5,17 @@
 class Counter : public QObject
   {
   Q_OBJECT
+  Q_PROPERTY(int m_value READ value WRITE setValue NOTIFY valueChanged);
 
   public:
-    Counter();
-    Counter(QObject* i_obj);
+    Q_INVOKABLE Counter();
+    Q_INVOKABLE Counter(QObject* i_obj);
     ~Counter();
 
     int value() const;
 
   public slots:
-    void setValue(int i_value);
+    Q_INVOKABLE void setValue(int i_value);
 
   signals:
     void valueChanged(int i_new_value);
@@ -30,9 +31,9 @@ class DerivedA : public Counter
 
   public:
     DerivedA() {}
-    DerivedA(QObject* i_obj) : Counter(i_obj) {}
-    DerivedA(int i_value) { setValue(i_value); }
-    DerivedA(double i_double) : m_double(i_double) {}
+    Q_INVOKABLE DerivedA(QObject* i_obj) : Counter(i_obj) {}
+    Q_INVOKABLE DerivedA(int i_value) { setValue(i_value); }
+    Q_INVOKABLE DerivedA(double i_double) : m_double(i_double) {}
     DerivedA(int i_value, double i_double) : m_double(i_double) { setValue(i_value); }
 
     void setDouble(double i_double) { m_double = i_double; }
@@ -47,6 +48,6 @@ class DerivedB : public Counter
   Q_OBJECT
 
   public:
-    DerivedB() {}
+    Q_INVOKABLE DerivedB() {}
     DerivedB(int i_value) { setValue(i_value); }
   };

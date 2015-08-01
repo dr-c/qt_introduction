@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 
   static_cast<Counter*>(pda)->setValue(10);
   pda->setProperty("m_value", 100);
-  qDebug() << "\n" << static_cast<Counter*>(pda)->value();
+  qDebug().nospace() << "\n" << static_cast<Counter*>(pda)->value();
   qDebug() << pda->property("m_value").toInt();
 
   //Add dinamic properies:

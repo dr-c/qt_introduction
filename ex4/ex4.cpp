@@ -32,7 +32,7 @@ ex4::ex4(QWidget *parent)
   QObject::connect(ui.horizontalSlider_2, &QSlider::valueChanged, ui.spinBox_2, &QSpinBox::setValue);
   QObject::connect(ui.horizontalSlider_3, &QSlider::valueChanged, ui.spinBox_3, &QSpinBox::setValue);
 
-  QObject::connect(ui.actionDon_t_press, &QAction::triggered, this, &ex4::OnSpaceSymbolPressed);
+  QObject::connect(ui.actionSpace, &QAction::triggered, this, &ex4::OnSpaceSymbolPressed);
   }
 
 ex4::~ex4()
@@ -43,7 +43,16 @@ ex4::~ex4()
 void ex4::OnSpaceSymbolPressed()
   {
   QMessageBox msgBox;
-  msgBox.setText("Space button pressed.");
+  msgBox.setText("SPACE button pressed.");
+  msgBox.setInformativeText("...");
+  msgBox.setStandardButtons(QMessageBox::Ok);
+  msgBox.exec();
+  }
+
+void ex4::on_actionReturn_triggered()
+  {
+  QMessageBox msgBox;
+  msgBox.setText("RETURN button pressed.");
   msgBox.setInformativeText("...");
   msgBox.setStandardButtons(QMessageBox::Ok);
   msgBox.exec();

@@ -14,6 +14,7 @@ class ex4 : public QMainWindow
 
   private slots:
     void OnSpaceSymbolPressed();
+    void on_actionReturn_triggered();
 
   private:
     Ui::ex4Class ui;

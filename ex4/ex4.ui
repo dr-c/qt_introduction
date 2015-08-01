@@ -132,15 +132,27 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionDon_t_press"/>
+   <addaction name="actionSpace"/>
+   <addaction name="actionReturn"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionDon_t_press">
+  <action name="actionSpace">
    <property name="text">
-    <string>Don't press</string>
+    <string>Space</string>
    </property>
    <property name="shortcut">
     <string>Space</string>
+   </property>
+  </action>
+  <action name="actionReturn">
+   <property name="text">
+    <string>Return</string>
+   </property>
+   <property name="toolTip">
+    <string>Press return button.</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
    </property>
   </action>
  </widget>

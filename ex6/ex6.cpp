@@ -29,9 +29,9 @@ void ex6::on_generateButton_clicked()
 
 void ex6::on_manipulatingButton_clicked()
   {
-  if (ui.manipulatingButton->text() == "Start sorting")
+  if (ui.manipulatingButton->text() == "&Start sorting")
     {
-    ui.manipulatingButton->setText("Stop sorting");
+    ui.manipulatingButton->setText("&Stop sorting");
     ui.progressBar->reset();
     ui.dataResult->clear();
 
@@ -63,7 +63,7 @@ void ex6::on_manipulatingButton_clicked()
     }
   else
     {
-    ui.manipulatingButton->setText("Start sorting");
+    ui.manipulatingButton->setText("&Start sorting");
     ui.dataResult->clear();
     ui.dataResult->setPlainText("Sorting was cancelled.");
     emit sortingCancelled();
@@ -77,7 +77,7 @@ void ex6::updateProgressBar(int i_value)
 
 void ex6::receiveSortingResult(QVector<int>* ip_result)
   {
-  ui.manipulatingButton->setText("Start sorting");
+  ui.manipulatingButton->setText("&Start sorting");
   ui.progressBar->setValue(ip_result->size());
 
   QString string;

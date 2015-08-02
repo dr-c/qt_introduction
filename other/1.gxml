@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph isDirected="true">
+    <Design>
+        <Types node="65637" edge="65738"/>
+        <Pens>
+            <Simple>
+                <Node penStyle="1" capStyle="16" joinStyle="64" width="2" color="4278190335"/>
+                <Edge penStyle="1" capStyle="16" joinStyle="64" width="2" color="4278190080"/>
+            </Simple>
+            <Hover>
+                <Node penStyle="1" capStyle="16" joinStyle="64" width="2" color="4294901760"/>
+                <Edge penStyle="1" capStyle="16" joinStyle="64" width="2" color="4294901760"/>
+            </Hover>
+        </Pens>
+        <Brushes>
+            <Node brushStyle="1" color="3233857728"/>
+            <Edge brushStyle="1" color="4290822336"/>
+        </Brushes>
+        <Fonts>
+            <Node family="Times New Roman" weight="50" pointSize="10"/>
+            <Edge family="Times New Roman" weight="50" pointSize="10"/>
+        </Fonts>
+    </Design>
+    <NodeList>
+        <Node id="1" x="-92" y="-366" weight="1"/>
+        <Node id="2" x="-18" y="-292" weight="1"/>
+        <Node id="3" x="5" y="-197" weight="1"/>
+        <Node id="4" x="-38" y="-115" weight="1"/>
+        <Node id="5" x="-99" y="-52" weight="1"/>
+        <Node id="6" x="-193" y="-30" weight="1"/>
+        <Node id="7" x="-292" y="-54" weight="1"/>
+        <Node id="8" x="-367" y="-119" weight="1"/>
+        <Node id="9" x="-396" y="-209" weight="1"/>
+        <Node id="10" x="-368" y="-304" weight="1"/>
+        <Node id="11" x="-300" y="-368" weight="1"/>
+        <Node id="12" x="-196" y="-398" weight="1"/>
+        <Node id="13" x="-198" y="-209" weight="21"/>
+    </NodeList>
+    <EdgeList>
+        <Edge weight="21" from_id="13" to_id="12"/>
+        <Edge weight="1" from_id="13" to_id="1"/>
+        <Edge weight="1" from_id="13" to_id="2"/>
+        <Edge weight="41" from_id="13" to_id="3"/>
+        <Edge weight="1" from_id="13" to_id="4"/>
+        <Edge weight="1" from_id="13" to_id="5"/>
+        <Edge weight="21" from_id="13" to_id="6"/>
+        <Edge weight="1" from_id="13" to_id="7"/>
+        <Edge weight="1" from_id="13" to_id="8"/>
+        <Edge weight="31" from_id="13" to_id="9"/>
+        <Edge weight="1" from_id="13" to_id="10"/>
+        <Edge weight="1" from_id="13" to_id="11"/>
+        <Edge weight="1" from_id="12" to_id="13"/>
+        <Edge weight="1" from_id="1" to_id="13"/>
+        <Edge weight="1" from_id="4" to_id="13"/>
+        <Edge weight="1" from_id="6" to_id="13"/>
+        <Edge weight="1" from_id="8" to_id="13"/>
+        <Edge weight="1" from_id="9" to_id="13"/>
+        <Edge weight="1" from_id="11" to_id="13"/>
+        <Edge weight="1" from_id="8" to_id="9"/>
+        <Edge weight="1" from_id="9" to_id="10"/>
+        <Edge weight="1" from_id="10" to_id="11"/>
+        <Edge weight="1" from_id="11" to_id="12"/>
+        <Edge weight="1" from_id="1" to_id="2"/>
+        <Edge weight="1" from_id="12" to_id="1"/>
+        <Edge weight="1" from_id="2" to_id="3"/>
+        <Edge weight="1" from_id="3" to_id="4"/>
+        <Edge weight="1" from_id="4" to_id="5"/>
+        <Edge weight="1" from_id="5" to_id="6"/>
+        <Edge weight="1" from_id="6" to_id="7"/>
+        <Edge weight="1" from_id="7" to_id="8"/>
+    </EdgeList>
+</Graph>

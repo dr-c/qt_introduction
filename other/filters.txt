@@ -1,0 +1,74 @@
+QApplication::exec()
+{
+	while (!posted_event_queue_is_empty)
+		process_next_posted_event();
+	while (!spontaneous_event_queue_is_empty)
+		process_next_spontaneous_event();
+	while (!posted_event_queue_is_empty)
+		process_next_posted_event();
+}
+
+QApplication::process_next_posted_event()
+{
+	//Compress
+	bool is_accepted = notify(next_receiver, next_event);
+	if (!is_accepted)
+		propagate();
+}
+
+bool QApplication::notify(QObject * receiver, QEvent * i_event)
+{
+	bool event_filtered = QApplication::useEventFilters(receiver, i_event);
+	if (event_filtered)
+		return true;
+	event_filtered = receiver->useEventFilters(i_event);
+	if (event_filtered)
+		return true;
+	return receiver->event(i_event);
+}
+
+bool QObject::event(QEvent * i_event)
+{
+	if (i_event.isPaintEvent())
+	{
+		PaintEvent(QPaintEvent(i_event));
+		if (i_event->isAccepted())
+			return false;
+	}
+	if (i_event.isKeyEvent())
+	{
+		keyPressEvent(QKeyEvent(i_event));
+		if (i_event->isAccepted())
+			return false;
+	}
+	//etc...
+}
+
+// 5) Reimplementing QApplication::notify().
+bool MyApplication::notify(QObject * receiver, QEvent * i_event)
+{
+	if (receiver == target_obj)
+		return true; // Don't deliver event to target_obj
+	return QApplication::notify(receiver, i_event);
+}
+
+// 4) Installing an event filter on qApp.
+QApplication::instance()->installEventFilter(some_filter);
+
+// 3) Installing an event filter on a QObject.
+object->installEventFilter(some_filter);
+
+// 2) Reimplementing QObject::event().
+bool MyObject::event(QEvent * i_event)
+{
+	if (i_event.isMouseEvent())
+		doSomething();
+	QObject::event(i_event);
+}
+
+// 1) Reimplementing a specific event handler.
+void GraphScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
+{
+    handler->mouseMoveEvent(mouseEvent);
+    QGraphicsScene::mouseMoveEvent(mouseEvent);
+}

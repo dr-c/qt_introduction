@@ -25,7 +25,6 @@ class ex6 : public QMainWindow
 
   private:
     Ui::ex6Class ui;
-    QThread* m_thread;
   };
 
 #endif // EX6_H

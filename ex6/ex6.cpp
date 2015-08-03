@@ -8,7 +8,6 @@
 
 ex6::ex6(QWidget *parent)
   : QMainWindow(parent)
-  , m_thread(nullptr)
   {
   ui.setupUi(this);
   }
@@ -42,11 +41,11 @@ void ex6::on_manipulatingButton_clicked()
 
     ui.progressBar->setRange(0, vector.size());
 
-    m_thread = new QThread;
+    QThread* thread = new QThread;
     Worker* worker = new Worker(qMove(vector));
-    worker->moveToThread(m_thread);
+    worker->moveToThread(thread);
 
-    QObject::connect(m_thread, &QThread::started, worker, &Worker::sort);
+    QObject::connect(thread, &QThread::started, worker, &Worker::sort);
     QObject::connect(worker, &Worker::processed, this, &ex6::updateProgressBar);
 
     QObject::connect(this, &ex6::sortingCancelled, worker, &Worker::cancel);
@@ -55,11 +54,11 @@ void ex6::on_manipulatingButton_clicked()
     QObject::connect(this, &ex6::resultReceived, worker, &Worker::finished);
 
     QObject::connect(worker, &Worker::finished, worker, &Worker::deleteLater);
-    QObject::connect(worker, &Worker::finished, m_thread, &QThread::quit);
+    QObject::connect(worker, &Worker::finished, thread, &QThread::quit);
 
-    QObject::connect(m_thread, &QThread::finished, m_thread, &QThread::deleteLater);
+    QObject::connect(thread, &QThread::finished, thread, &QThread::deleteLater);
 
-    m_thread->start();
+    thread->start();
     }
   else
     {

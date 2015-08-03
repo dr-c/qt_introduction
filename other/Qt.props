@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+	<QTVERSION>5.4.1</QTVERSION>
+	<MAT_3RDP_DIR>C:\Users\dry\Documents\Visual Studio 2013\Projects\Project\Sources\3rd-party\</MAT_3RDP_DIR>
+	<QTBASE>$(MAT_3RDP_DIR)Qt_$(QTVERSION)-vs2013</QTBASE>
+	<QTDIR Condition="'$(Platform)' == 'Win32'">$(QTBASE)\Win32</QTDIR>
+	<QTDIR Condition="'$(Platform)' == 'x64'">$(QTBASE)\x64</QTDIR>
+	<CopyDependendencies Condition="'$(Configuration)' == 'Debug'">
+	  xcopy "$(QTDIR)\bin\Qt5Cored.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Guid.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Widgetsd.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Networkd.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Concurrentd.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Xmld.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\icuin53.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\icuuc53.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\icudt53.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\libegld.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\libglesv2d.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\imageformats\qgifd.dll" "$(SolutionDir)$(Platform)\$(Configuration)\imageformats\" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\imageformats\qgifd.pdb" "$(SolutionDir)$(Platform)\$(Configuration)\imageformats\" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\imageformats\qjpegd.dll" "$(SolutionDir)$(Platform)\$(Configuration)\imageformats\" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\imageformats\qjpegd.pdb" "$(SolutionDir)$(Platform)\$(Configuration)\imageformats\" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\platforms\qwindowsd.dll" "$(SolutionDir)$(Platform)\$(Configuration)\platforms\" /D /Q /Y
+	  xcopy "$(SolutionDir)other\qt.conf" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  $(CopyDependendencies)
+	</CopyDependendencies>
+	<CopyDependendencies Condition="'$(Configuration)' == 'Release'">
+	  xcopy "$(QTDIR)\bin\Qt5Core.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Gui.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Widgets.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Network.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Concurrent.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\Qt5Xml.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\icuin53.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\icuuc53.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\icudt53.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\libegl.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\bin\libglesv2.dll" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\imageformats\qgif.dll" "$(SolutionDir)$(Platform)\$(Configuration)\imageformats\" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\imageformats\qjpeg.dll" "$(SolutionDir)$(Platform)\$(Configuration)\imageformats\" /D /Q /Y
+	  xcopy "$(QTDIR)\plugins\platforms\qwindows.dll" "$(SolutionDir)$(Platform)\$(Configuration)\platforms\" /D /Q /Y
+	  xcopy "$(SolutionDir)other\qt.conf" "$(SolutionDir)$(Platform)\$(Configuration)" /D /Q /Y
+	  $(CopyDependendencies)
+	</CopyDependendencies>
+
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>
+		$(QTDIR)\include;
+		$(QTDIR)\include\Qt;
+		$(QTDIR)\include\qtmain;
+		$(QTDIR)\include\QtCore;
+		$(QTDIR)\include\QtXml;
+		$(QTDIR)\include\QtGui;
+		$(QTDIR)\include\QtGui\$(QTVERSION)\QtGui;
+		$(QTDIR)\include\QtWidgets;
+		$(QTDIR)\include\QtANGLE;
+		%(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)' == 'Release'">QT_NO_DEBUG%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>QT_NO_SIGNALS;QT_NO_SLOTS;QT_LARGEFILE_SUPPORT;QT_CORE_LIB;QT_GUI_LIB;QT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\plugins\platforms;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies Condition="'$(Configuration)' == 'Debug'">qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;Qt5Networkd.lib;Qt5Concurrentd.lib;Qt5Xmld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)' == 'Release'">qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Widgets.lib;Qt5Network.lib;Qt5Concurrent.lib;;Qt5Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(CopyDependendencies)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
